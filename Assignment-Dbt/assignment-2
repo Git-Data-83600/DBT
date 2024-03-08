@@ -1,0 +1,26 @@
+A relational database is a collection of information that organizes data in predefined relationships where data is stored in one or more tables (or "relations") of columns and rows, making it easy to see and understand how different data structures relate to each other.
+
+
+QUE 1]
+
+---> THE PRIMARY KEY IN CUSTOMERS TABLE IS CNUM.
+
+
+
+QUE 2]
+--->RATING IS THE 4th COLUMN OF THE CUSTOMER TABLE.
+
+
+
+
+QUE 3]
+---> ANOTHER WORD FOR ROW IN RDBMS [ TUPLE, ENTITY ,OPPORTUNITY]
+                      AND FOR COLUMN [ ATTRIBUTES, METHOD ,KEY]
+ 
+ 
+                      
+QUE 4]
+---> IN A DBMS DATA IS STORED INSIDE A FILE INSIDE A FILE THE DATA IS STORED SEQUENTIALLY
+        IN RDBMS TABLE IS NOT A FILE EVERY ROW IS A FILE THE ROW INSIDE A TABLE ARE NOT STORED SEQUENTIALLY THE ROW INSIDE  THE TABLE ARE SCATTERED ALL OVER THE BD 		 		SERVER HARD DISC.
+        THAT'S WHY ISN'T IT POSSIBLE TO SEE THE FIRST FIVE ROW OF A TABLE.
+        
