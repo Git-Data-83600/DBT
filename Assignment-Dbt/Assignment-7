@@ -1,0 +1,108 @@
+Q.1]
+
+KD4_Balkisan_83600>select count(*)from ORDERS where Odate = '1990-10-03';
++----------+
+| count(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.01 sec)
+
+
+
+
+
+
+
+
+
+Q.2]
+
+KD4_Balkisan_83600>select count(city) from CUSTOMERS where city is not null;
++-------------+
+| count(city) |
++-------------+
+|           7 |
++-------------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
+Q.3]
+
+KD4_Balkisan_83600>select Cnum, min(Amt) from ORDERS group by Cnum;
++------+----------+
+| Cnum | min(Amt) |
++------+----------+
+| 2008 |    18.69 |
+| 2001 |   767.19 |
+| 2007 |  1900.10 |
+| 2003 |  5160.45 |
+| 2002 |  1713.23 |
+| 2004 |    75.75 |
+| 2006 |  4723.00 |
++------+----------+
+7 rows in set (0.00 sec)
+
+
+
+
+
+
+
+Q.4]
+
+KD4_Balkisan_83600>select * from CUSTOMERS where Cname like 'G%'order by Cname limit 1;
++------+----------+------+--------+------+
+| Cnum | Cname    | City | Rating | Snum |
++------+----------+------+--------+------+
+| 2002 | Giovanni | Rome |    200 | 1003 |
++------+----------+------+--------+------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+Q.5]
+
+KD4_Balkisan_83600>select City, max(Rating) from CUSTOMERS group by City;
++----------+-------------+
+| City     | max(Rating) |
++----------+-------------+
+| London   |         100 |
+| Rome     |         200 |
+| San Jose |         300 |
+| Berlin   |         300 |
++----------+-------------+
+4 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+Q.6]
+
+KD4_Balkisan_83600>select Snum,count(distinct Odate) from ORDERS group by Snum order by 1;
++------+-----------------------+
+| Snum | count(distinct Odate) |
++------+-----------------------+
+| 1001 |                     3 |
+| 1002 |                     3 |
+| 1003 |                     1 |
+| 1004 |                     1 |
+| 1007 |                     1 |
++------+-----------------------+
+5 rows in set (0.01 sec)
+
