@@ -29,33 +29,23 @@ KD4_Balkisan_83600>select Onum,Cname from ORDERS,CUSTOMERS where CUSTOMERS.Cnum=
 
 Q.2]
 
-KD4_Balkisan_83600>select Sname,Cname,Onum from ORDERS,CUSTOMERS,SALESPEOPLE where ORDERS.Snum=SALESPEOPLE.Snum and ORDERS.Snum=CUSTOMERS.Snu
-m ;
+KD4_Balkisan_83600>select Sname,Cname,Onum from ORDERS,CUSTOMERS,SALESPEOPLE where ORDERS.Snum=SALESPEOPLE.Snum and ORDERS.Cnum=CUSTOMERS.Cnum;
 +---------+----------+------+
 | Sname   | Cname    | Onum |
 +---------+----------+------+
-| Rifkin  | Cisneros | 3001 |
-| onkar   | Clemens  | 3003 |
-| Peel    | Clemens  | 3003 |
-| onkar   | Hoffman  | 3003 |
 | Peel    | Hoffman  | 3003 |
-| Motika  | Pereira  | 3002 |
-| Serres  | Grass    | 3005 |
-| Rifkin  | Cisneros | 3006 |
-| Axelrod | Liu      | 3009 |
 | Axelrod | Giovanni | 3009 |
-| Serres  | Grass    | 3007 |
-| onkar   | Clemens  | 3008 |
-| Peel    | Clemens  | 3008 |
-| onkar   | Hoffman  | 3008 |
-| Peel    | Hoffman  | 3008 |
+| Serres  | Liu      | 3005 |
 | Serres  | Grass    | 3010 |
-| onkar   | Clemens  | 3011 |
+| Serres  | Grass    | 3007 |
 | Peel    | Clemens  | 3011 |
-| onkar   | Hoffman  | 3011 |
-| Peel    | Hoffman  | 3011 |
+| Peel    | Clemens  | 3008 |
+| Rifkin  | Cisneros | 3006 |
+| Rifkin  | Cisneros | 3001 |
+| Motika  | Pereira  | 3002 |
 +---------+----------+------+
-20 rows in set (0.01 sec)
+10 rows in set (0.01 sec)
+
 
 
 
