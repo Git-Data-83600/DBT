@@ -1,0 +1,34 @@
+Q.1]
+
+KD4_Balkisan_83600>select a.Sname,b.Sname,a.City from SALESPEOPLE a, SALESPEOPLE b where a.City=b.City and a.Sname!=b.Sname and a.Sname>b.Sname;
++-------+--------+--------+
+| Sname | Sname  | City   |
++-------+--------+--------+
+| Peel  | Motika | London |
++-------+--------+--------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q.2]
+
+KD4_Balkisan_83600>select a.Cname,a.City,a.City from CUSTOMERS a, CUSTOMERS b where a.Rating=b.Rating and b.Cname='Hoffman';
++---------+--------+--------+
+| Cname   | City   | City   |
++---------+--------+--------+
+| Hoffman | London | London |
+| Clemens | London | London |
+| Pereira | Rome   | Rome   |
++---------+--------+--------+
+3 rows in set (0.00 sec)
+
