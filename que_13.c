@@ -22,7 +22,7 @@ void findDuplicates(char *strings[])
 }
 int main()
 {
-    char *arr[] = {"Aditya", "Satpute", "Sunbeam", "Aditya"};
+    char *arr[] = {"Balkisan", "Vishwakarma", "Sunbeam", "Balkisan"};
     findDuplicates(arr);
     return 0;
 }
