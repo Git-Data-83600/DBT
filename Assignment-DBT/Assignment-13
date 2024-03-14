@@ -1,0 +1,68 @@
+Q.1]
+
+KD4_Balkisan_83600> select City,Cname,'High Rating'Rating from CUSTOMERS where Rating>200 union select City,Cname,'Low Rating'Rating from
+ CUSTOMERS where Rating <200;
++----------+----------+-------------+
+| City     | Cname    | Rating      |
++----------+----------+-------------+
+| Berlin   | Grass    | High Rating |
+| San Jose | Cisneros | High Rating |
+| London   | Hoffman  | Low Rating  |
+| London   | Clemens  | Low Rating  |
+| Rome     | Pereira  | Low Rating  |
++----------+----------+-------------+
+5 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+Q.2]
+
+select concat(s1.sname ," (SALESPEOPLE)") 'Name',s1.Snum 'No.' from SALESPEOPLE s1,(select Snum from ORDERS group by Snum having count(Snum)>1)as abcd where abcd.Snum=s1.Snum union
+(select concat(c1.Cname," (CUSTOMERS)"),c1.Cnum from CUSTOMERS c1,(select Cnum from ORDERS group by
+Cnum having count(Cnum)>1)as xyz where xyz.Cnum=c1.Cnum) order by Name asc;
++----------------------+------+
+| Name                 | No.  |
++----------------------+------+
+| Cisneros (CUSTOMERS) | 2008 |
+| Clemens (CUSTOMERS)  | 2006 |
+| Grass (CUSTOMERS)    | 2004 |
+| Peel (SALESPEOPLE)   | 1001 |
+| Rifkin (SALESPEOPLE) | 1007 |
+| Serres (SALESPEOPLE) | 1002 |
++----------------------+------+
+6 rows in set (0.01 sec)
+
+
+
+
+
+
+
+
+Q.3]
+
+select distinct Snum "No ." from SALESPEOPLE where City='san jose' union (select
+distinct Cnum from CUSTOMERS where City='san jose' union all  select distinct Onum from ORDERS where
+ Odate='1990
++------+
+| No . |
++------+
+| 1002 |
+| 2003 |
+| 2008 |
+| 3001 |
+| 3003 |
+| 3002 |
+| 3005 |
+| 3006 |
++------+
+8 rows in set (0.00 sec)
+
+

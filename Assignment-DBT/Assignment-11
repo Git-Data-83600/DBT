@@ -1,0 +1,50 @@
+Q.1]
+
+KD4_Balkisan_83600>select Onum,Cnum from ORDERS where Cnum in(select Cnum from CUSTOMERS where Cname ='Cisneros');
++------+------+
+| Onum | Cnum |
++------+------+
+| 3001 | 2008 |
+| 3006 | 2008 |
++------+------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+Q.2]
+
+KD4_Balkisan_83600>select Cname,Rating from CUSTOMERS where Rating >(select avg(Rating) from CUSTOMERS);
++----------+--------+
+| Cname    | Rating |
++----------+--------+
+| Giovanni |    200 |
+| Liu      |    200 |
+| Grass    |    300 |
+| Cisneros |    300 |
++----------+--------+
+4 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+Q.3]
+
+KD4_Balkisan_83600>select Snum,Sum(Amt) from ORDERS group by Snum having sum(Amt)> (select max(amt) from ORDERS);
++------+----------+
+| Snum | Sum(Amt) |
++------+----------+
+| 1001 | 15382.07 |
++------+----------+
+1 row in set (0.00 sec)
+

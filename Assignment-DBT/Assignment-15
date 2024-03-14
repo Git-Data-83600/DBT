@@ -1,0 +1,111 @@
+Q.1]
+
+KD4_Balkisan_83600>select * from SALESPEOPLE;
++------+---------+-----------+------+
+| Snum | Sname   | City      | Comm |
++------+---------+-----------+------+
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New Tork  | 0.10 |
+| 1001 | Peel    | London    | 0.12 |
+| 1100 | Blanco  | San Jose  | NULL |
++------+---------+-----------+------+
+6 rows in set (0.00 sec)
+
+KD4_Balkisan_83600>select * from CUSTOMERS;
++------+----------+----------+--------+------+
+| Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    300 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1004 |
+| 2004 | Grass    | Berlin   |    300 | 1004 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    200 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+KD4_Balkisan_83600>create table multicust as select * from SALESPEOPLE where Snum=any(select Snum from CUSTOMERS group by Snum having count(Snum)>1);
+Query OK, 2 rows affected, 1 warning (0.14 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+KD4_Balkisan_83600>select * from multicastS;
+ERROR 1146 (42S02): Table 'classwork1.multicastS' doesn't exist
+KD4_Balkisan_83600>select * from multicast;
+ERROR 1146 (42S02): Table 'classwork1.multicast' doesn't exist
+KD4_Balkisan_83600>select * from multicust;
++------+--------+--------+------+
+| Snum | Sname  | City   | Comm |
++------+--------+--------+------+
+| 1004 | Motika | London | 0.11 |
+| 1001 | Peel   | London | 0.12 |
++------+--------+--------+------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q.2]
+
+KD4_Balkisan_83600>delete from CUSTOMERS  where Cnum NOT IN(Select abcd.Cnum from (select c1.Cnum fr
+om CUSTOMERS c1,ORDERS o1 where c1.Cnum=o1.Cnum)as abcd);
+Query OK, 1 row affected (0.02 sec)
+
+KD4_Balkisan_83600>select * from CUSTOMERS;
++------+----------+----------+--------+------+
+| Cnum | Cname    | City     | Rating | Snum |
++------+----------+----------+--------+------+
+| 2001 | Hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    300 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1004 |
+| 2004 | Grass    | Berlin   |    300 | 1004 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    200 | 1004 |
++------+----------+----------+--------+------+
+6 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q.3]
+
+KD4_Balkisan_83600>update SALESPEOPLE set Comm=Comm+0.2 where Snum=(select distinct Snum from ORDERS
+ where Amt>3000);
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+KD4_Balkisan_83600>select * from SALESPEOPLE;
++------+---------+-----------+------+
+| Snum | Sname   | City      | Comm |
++------+---------+-----------+------+
+| 1002 | Serres  | San Jose  | 0.33 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelona | 0.15 |
+| 1003 | Axelrod | New Tork  | 0.10 |
+| 1001 | Peel    | London    | 0.12 |
+| 1100 | Blanco  | San Jose  | NULL |
++------+---------+-----------+------+
+6 rows in set (0.00 sec)
+
+
