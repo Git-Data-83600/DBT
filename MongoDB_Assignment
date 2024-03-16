@@ -1,0 +1,293 @@
+1]
+
+sudo apt-get install gnupg curl
+
+
+
+
+   
+2] 
+
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \--dearmor
+
+
+
+
+
+
+   
+3]
+
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+
+
+
+
+   
+4]
+
+sudo apt-get update
+
+
+
+
+
+   
+5]
+   
+ sudo apt-get install -y mongodb-org  
+
+
+
+
+   
+6]
+
+test> show dbs
+admin   40.00 KiB
+config  12.00 KiB
+local   72.00 KiB
+
+
+
+
+
+
+
+
+
+
+7]
+
+test> use cdac
+switched to db cdac
+
+
+
+
+
+
+
+   
+8]
+
+cdac> show collections
+LIBRARY
+
+
+
+
+
+
+
+9]
+
+cdac> db.createCollection("LIBRARY")
+{ ok: 1 }
+
+
+
+
+
+
+
+10]
+
+cdac> db.LIBRARY.insert({title:'MangoDb Programming',author:'balkisan',likes:100})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f56a68fcb242bb71db83b5') }
+}
+
+
+
+
+
+
+11]
+
+
+cdac> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f56a68fcb242bb71db83b5'),
+    title: 'MangoDb Programming',
+    author: 'balkisan',
+    likes: 100
+  }
+]
+
+
+
+
+
+
+
+12]
+
+cdac> db.LIBRARY.insert({title:'MySQL Programming',authors:['jack','jail'],likes:200})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f56b33fcb242bb71db83b6') }
+}
+
+
+
+
+
+
+
+13]
+
+cdac> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f56a68fcb242bb71db83b5'),
+    title: 'MangoDb Programming',
+    author: 'balkisan',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f56b33fcb242bb71db83b6'),
+    title: 'MySQL Programming',
+    authors: [ 'jack', 'jail' ],
+    likes: 200
+  }
+]
+
+
+
+
+
+14]
+
+cdac> db.LIBRARY.findOne()
+{
+  _id: ObjectId('65f56a68fcb242bb71db83b5'),
+  title: 'MangoDb Programming',
+  author: 'balkisan',
+  likes: 100
+}
+
+
+
+
+
+
+
+
+15]
+
+cdac> db.LIBRARY.find().pretty()
+[
+  {
+    _id: ObjectId('65f56a68fcb242bb71db83b5'),
+    title: 'MangoDb Programming',
+    author: 'balkisan',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f56b33fcb242bb71db83b6'),
+    title: 'MySQL Programming',
+    authors: [ 'jack', 'jail' ],
+    likes: 200
+  }
+]
+
+
+
+
+
+
+
+16]
+
+cdac> db.LIBRARY.update({author:'balkisan'},{$set:{author:'balkisan vishwakarma'}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+cdac> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f56a68fcb242bb71db83b5'),
+    title: 'MangoDb Programming',
+    author: 'balkisan vishwakarma',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f56b33fcb242bb71db83b6'),
+    title: 'MySQL Programming',
+    authors: [ 'jack', 'jail' ],
+    likes: 200
+  }
+]
+
+
+
+
+
+
+
+
+17]
+
+cdac> db.LIBRARY.remove({likes:100})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+cdac> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f56b33fcb242bb71db83b6'),
+    title: 'MySQL Programming',
+    authors: [ 'jack', 'jail' ],
+    likes: 200
+  }
+]
+
+
+
+
+
+
+
+
+
+18]
+
+dac> db.LIBRARY.drop()
+true
+cdac> db.LIBRARY.find()
+
+
+
+
+
+
+
+
+19]
+
+cdac> db.dropDatabase()
+{ ok: 1, dropped: 'cdac' }
+
+
+
+
+
+
+
+
+20]
+
+cdac> exit
+sunbeam@sunbeam-DELLLaptop-7400-BK:~$ 
+
+
+
+
